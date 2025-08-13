@@ -1,0 +1,129 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>KarynProject Deface</title>
+<style>
+  body {
+    margin:0;
+    padding:0;
+    background:black;
+    font-family:"Courier New", monospace;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+  }
+
+  #logo {
+    margin-top:50px;
+    width:150px;
+    height:auto;
+  }
+
+  #hacker-name {
+    font-size:36px;
+    margin:20px 0;
+    color:white;
+  }
+
+  #chat-box {
+    width:90%;
+    max-width:800px;
+    margin:20px auto;
+    text-align:left;
+  }
+
+  .message {
+    background:#111;
+    padding:8px 12px;
+    margin:8px 0;
+    border-radius:8px;
+    display:inline-block;
+    opacity:0;
+    transition: opacity 0.5s;
+    font-size:20px;
+    white-space:nowrap;
+  }
+
+  #scroll-text {
+    position:fixed;
+    bottom:50px; /* di atas audio */
+    width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    font-size:18px;
+    background:black;
+    color:white;
+  }
+
+  #scroll-text div {
+    display:inline-block;
+    padding-left:100%;
+    animation: scroll 15s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% { transform:translateX(0%); }
+    100% { transform:translateX(-100%); }
+  }
+
+  #audio-player {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:black;
+    padding:10px 0;
+    z-index:1000;
+  }
+</style>
+</head>
+<body>
+
+<!-- Logo -->
+<img id="logo" src="logo.png" alt="Logo">
+
+<!-- Nama Hacker -->
+<div id="hacker-name">KARYNPROJECT</div>
+
+<!-- Chat-like messages satu baris -->
+<div id="chat-box">
+  <div class="message">Koruptor menumpuk harta, rakyat menderita.</div>
+  <div class="message">Kebohonganmu akan tercatat sejarah.</div>
+  <div class="message">Uang haram tak akan membawa bahagia.</div>
+  <div class="message">Kebenaran selalu menjemputmu.</div>
+  <div class="message">Integritas tak bisa kau hancurkan.</div>
+</div>
+
+<!-- Teks berjalan horizontal -->
+<div id="scroll-text">
+  <div>
+    Koruptor tak akan aman — KARYNPROJECT selalu mengawasi || Setiap harta haram akan hilang || Kejahatanmu akan terbuka
+  </div>
+</div>
+
+<!-- Audio player dengan lagu koruptor.mp3 -->
+<div id="audio-player">
+  <audio controls>
+    <source src="koruptor.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+</div>
+
+<script>
+// Animasi muncul satu per satu
+const messages = document.querySelectorAll('.message');
+let i = 0;
+
+function showNextMessage() {
+  if (i < messages.length) {
+    messages[i].style.opacity = 1;
+    i++;
+    setTimeout(showNextMessage, 1000); // delay tiap pesan
+  }
+}
+
+window.onload = showNextMessage;
+</script>
+
+</body>
+</html>
